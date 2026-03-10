@@ -32,7 +32,7 @@ import java.util.Vector;
 public class IntroVectors {
     public static void main(String args[]) {
         //Vector<Integer> V = new Vector(5, 10);
-        OurVector V = new OurVector(5, 10);
+        OurVector<Integer> V = new OurVector<Integer>(5, 10);
         //initial length is 5, when we reach 5, it's resized
         //to 15.
         System.out.println("V.capcity(): " + V.capacity() + " V.size: " + V.size() +
@@ -61,7 +61,7 @@ public class IntroVectors {
         temp = V.remove(2);//removes element at index 2
         System.out.println("Removed " + temp + " V: " + V + " V.size " + V.size() + " capa: " + V.capacity());
         //adding at index 4 with trigger an IndexOutOfBoundsException as 4 will leave a space at 3
-        V.add(4, -21);
+        //V.add(4, -21);
 
     }
 }
