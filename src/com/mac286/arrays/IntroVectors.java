@@ -31,7 +31,7 @@ import java.util.Vector;
 
 public class IntroVectors {
     public static void main(String args[]) {
-       // Vector<Integer> V = new Vector(5, 10);
+        //Vector<Integer> V = new Vector(5, 10);
         OurVector V = new OurVector(5, 10);
         //initial length is 5, when we reach 5, it's resized
         //to 15.
@@ -54,28 +54,14 @@ public class IntroVectors {
         V.add(0, -17); //adding -11 at index 0
         System.out.println("V.capcity(): " + V.capacity() + " V.size: " + V.size() +
                 "\nV: " + V);
-/*
-        //add -9 between -1 and -5
-        V.add(2, -9); //adds -9 at index 2, -5 is pushed up
-        System.out.println("V.capcity(): " + V.capacity() + " V.size: " + V.size() +
-                "\nV: " + V);
-        V.add(-7); //adds to the back of the array
-        System.out.println("V.capcity(): " + V.capacity() + " V.size: " + V.size() +
-                "\nV: " + V);
-        V.add(3, -13); //adds -13 at index 3, -5 and -7 are pushed up by 1
-        System.out.println("V.capcity(): " + V.capacity() + " V.size: " + V.size() +
-                "\nV: " + V);
-        //remove from the back
-        int temp = V.removeFirst();
+        int temp = V.removeLast();
         System.out.println("Removed " + temp + " V: " + V + " V.size " + V.size() + " capa: " + V.capacity()); //-1, -9 ...all pushed down by 1
-        temp = V.removeLast();
-        System.out.println("Removed " + temp + " V: " + V + " V.size " + V.size() + " capa: " + V.capacity());
-        //remove -13
+        temp = V.removeFirst();
+        System.out.println("Removed " + temp + " V: " + V + " V.size " + V.size() + " capa: " + V.capacity()); //-1, -9 ...all pushed down by 1
         temp = V.remove(2);//removes element at index 2
         System.out.println("Removed " + temp + " V: " + V + " V.size " + V.size() + " capa: " + V.capacity());
         //adding at index 4 with trigger an IndexOutOfBoundsException as 4 will leave a space at 3
         V.add(4, -21);
 
-         */
     }
 }

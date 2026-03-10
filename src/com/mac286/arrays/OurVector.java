@@ -1,5 +1,7 @@
 package com.mac286.arrays;
 
+import java.util.EmptyStackException;
+
 public class OurVector {
     private int[] V;
     private int size, increment;
@@ -49,12 +51,44 @@ public class OurVector {
     }
     public int removeLast(){
         //if empty throw emptyStackException
-
+        if(this.isEmpty()){
+            throw new EmptyStackException();
+        }
         //remember last
-
+        int save = V[size-1];
         //decrease size
-
+        size--;
         //return the saved
+        return save;
+    }
+    public int removeFirst(){
+        if(this.isEmpty()){
+            throw new EmptyStackException();
+        }
+        //save the first
+        int save = V[0];
+        //push all elements down by one starting at index 1
+        for(int i = 1; i < size; i++){
+            V[i-1] = V[i];
+        }
+        size--;
+        return save;
+    }
+    public int remove(int index){
+        //check if index is valid, if not throw IndexOutOfBoundsException
+        if(index < 0 || index >size-1){
+            throw new IndexOutOfBoundsException("Invalid index");
+        }
+        //save element at index
+        int save = V[index];
+        //push down all elements by one starting at index
+        for(int i = index+ 1; i < size; i++){
+            V[i-1] = V[i];
+        }
+        //decrement size
+        size--;
+        //return saved
+        return save;
     }
     public void addLast(int e){
         this.add(e);
