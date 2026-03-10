@@ -31,8 +31,9 @@ import java.util.Vector;
 
 public class IntroVectors {
     public static void main(String args[]) {
-        Vector<Integer> V = new Vector(5, 10);
-        //inial length is 5, when we reach 5, it's resized
+       // Vector<Integer> V = new Vector(5, 10);
+        OurVector V = new OurVector(5, 10);
+        //initial length is 5, when we reach 5, it's resized
         //to 15.
         System.out.println("V.capcity(): " + V.capacity() + " V.size: " + V.size() +
                 "\nV: " + V);
@@ -40,11 +41,20 @@ public class IntroVectors {
         V.add(-5);
         System.out.println("V.capcity(): " + V.capacity() + " V.size: " + V.size() +
                 "\nV: " + V);
-        /*
-        V.add(0, -11); //adding -11 at index 0
+        V.addFirst(-9);
+        System.out.println("V.capcity(): " + V.capacity() + " V.size: " + V.size() +
+                "\nV: " + V);
+        V.add(2, -11);
+        System.out.println("V.capcity(): " + V.capacity() + " V.size: " + V.size() +
+                "\nV: " + V);
+        V.add(4, -13);
         System.out.println("V.capcity(): " + V.capacity() + " V.size: " + V.size() +
                 "\nV: " + V);
 
+        V.add(0, -17); //adding -11 at index 0
+        System.out.println("V.capcity(): " + V.capacity() + " V.size: " + V.size() +
+                "\nV: " + V);
+/*
         //add -9 between -1 and -5
         V.add(2, -9); //adds -9 at index 2, -5 is pushed up
         System.out.println("V.capcity(): " + V.capacity() + " V.size: " + V.size() +
