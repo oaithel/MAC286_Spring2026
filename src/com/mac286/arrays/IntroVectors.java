@@ -63,5 +63,19 @@ public class IntroVectors {
         //adding at index 4 with trigger an IndexOutOfBoundsException as 4 will leave a space at 3
         //V.add(4, -21);
 
+        //Create an OurVector object that contains strings
+        OurVector<String> Vec = new OurVector<>();
+        //add the following strings to it: Hello, Hola, Hi, Bye  (display)
+        Vec.add("Hello");
+        Vec.add("Hola");
+        Vec.add("Hi");
+        Vec.add("Bye");
+        System.out.println("Vec: " + Vec);
+        //Add How between Hola and Hi   display the vetor
+        Vec.add(2, "How");
+        System.out.println("Vec: " + Vec);
+        //IN ONE instruction move Hola from index 1 to 0. Display the vector
+        Vec.add(0, Vec.remove(1));//What you remove at index 1 add it at index 0
+        System.out.println("Vec: " + Vec);
     }
 }
