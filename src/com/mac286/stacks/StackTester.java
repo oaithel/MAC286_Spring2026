@@ -17,8 +17,10 @@ The standard interface of a stack is the following:
  */
 public class StackTester {
     public static void main(String[] args) {
-       // Stack<Integer> S = new Stack<>();
-        OurStack<Integer> S = new OurStack<>();
+        //Stack<Integer> S = new Stack<>();
+        //OurStack<Integer> S = new OurStack<>();
+        wStack<Integer> S = new wStack<>();
+        System.out.println("poping: " + S.peek());
         //push -1, -3, -9, -7
         S.push(-1);
         S.push(-3);

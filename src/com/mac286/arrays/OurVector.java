@@ -35,7 +35,7 @@ public class OurVector <T>{
         return V.length;
     }
     //method isEmpty() returns true is size is 0 and false if not
-    boolean isEmpty(){
+    public boolean isEmpty(){
         return (size == 0);
     }
     private void resize(){
@@ -130,6 +130,13 @@ public class OurVector <T>{
         //add e at index size
         V[size] = e;
         size++;
+    }
+    public T get(int ind){
+        if(ind < 0 || ind >size-1){
+            //System.out.println("Invalid index");
+            throw new IndexOutOfBoundsException("Invalid index");
+        }
+        return V[ind];
     }
     //method toString to display the array in the form seem this morning
     public String toString(){
