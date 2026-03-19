@@ -31,7 +31,17 @@ public class OurQueue <T>{
     }
     //T remove() removes the first and returns it
     public T remove(){
-
+        if(this.isEmpty()){
+            throw new EmptyStackException();
+        }
+        //save the first
+        T save = Q[0];
+        //push all elements down by one starting at index 1
+        for(int i = 1; i < size; i++){
+            Q[i-1] = Q[i];
+        }
+        size--;
+        return save;
     }
     //T peek()
     public T peek(){

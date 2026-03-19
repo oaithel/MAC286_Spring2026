@@ -1,8 +1,10 @@
 package com.mac286.arrays;
 
+import com.mac286.queues.iOurQueue;
+
 import java.util.EmptyStackException;
 
-public class OurVector <T>{
+public class OurVector <T> implements iOurQueue<T> {
     private T[] V;
     private int size, increment;
 
@@ -131,6 +133,17 @@ public class OurVector <T>{
         V[size] = e;
         size++;
     }
+
+    @Override
+    public T remove() {
+        return this.remove(0);
+    }
+
+    @Override
+    public T peek() {
+        return this.get(0);
+    }
+
     public T get(int ind){
         if(ind < 0 || ind >size-1){
             //System.out.println("Invalid index");
