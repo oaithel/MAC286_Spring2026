@@ -69,9 +69,15 @@ public class PracticeStack {
 
         System.out.println("After S: " + mainStack);
 
-        //TODO: HW4 Generate a new stack same as above, and display it before.
+        /*TODO: HW4 Generate a new stack same as above, and reorganize it the same way
 
-        //Using one OurVector object, reorganize the stack as before.
+        1- Using one queue and one stack for help;
+
+        2- Using one OurVector object only for help;
+
+        3- Challenging: Using one single queue for help;
+
+         */
 
 
     }
