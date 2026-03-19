@@ -11,7 +11,8 @@ public class QueueTester {
         //object of an implenting class of that interface.
         //Queue<Integer> Q = new LinkedList<>();
         //OurQueue<Integer> Q = new OurQueue<>();
-        iOurQueue<Integer> Q = new OurVector<>();
+        //iOurQueue<Integer> Q = new OurVector<>();
+        CircularQueue<Integer> Q = new CircularQueue<>();
         Q.add(-1);
         Q.add(-5);
         Q.add(-3);
@@ -20,6 +21,11 @@ public class QueueTester {
         System.out.println("Q: " + Q);
         Q.add(-9);
         Q.add(-11);
+        System.out.println("Q: " + Q);
+        System.out.println("Removing: " + Q.remove());
+        System.out.println("Q: " + Q);
+        Q.add(-13);
+        Q.add(-17);
         System.out.println("Q: " + Q);
         System.out.println("Removing: " + Q.remove());
         System.out.println("Q: " + Q);
