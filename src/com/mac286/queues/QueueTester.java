@@ -18,5 +18,10 @@ public class QueueTester {
         System.out.println("Q: " + Q);
         System.out.println("Removing: " + Q.remove());
         System.out.println("Q: " + Q);
+        Q.add(-9);
+        Q.add(-11);
+        System.out.println("Q: " + Q);
+        System.out.println("Removing: " + Q.remove());
+        System.out.println("Q: " + Q);
     }
 }
