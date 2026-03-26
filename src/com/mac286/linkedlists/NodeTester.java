@@ -16,6 +16,8 @@ public class NodeTester {
         //Set a reference Head to the first node N1
         Node<Integer> Head = N1;
         Node<Integer> Tail = N5;
+        //show the content of N2 using Head reference:
+        System.out.println("N2: " + Head.getNext().getData());
         //Change the content of N2 to -9, using only Head reference.
 
         //display the N2 using only Head reference.
