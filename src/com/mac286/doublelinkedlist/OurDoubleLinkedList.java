@@ -1,9 +1,7 @@
 package com.mac286.doublelinkedlist;
 
-import com.mac286.linkedlists.Node;
-
+//TODO: HW6  complete DoubleLinkedList and test it with your own testers
 import java.util.EmptyStackException;
-
 public class OurDoubleLinkedList <T>{
     private class Node<TT> {
         private TT data;
