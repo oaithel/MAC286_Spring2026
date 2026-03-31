@@ -23,6 +23,11 @@ public class LinkedListTester {
         System.out.println("Ar: " + Ar);
         Ar.add(2, -13);
         System.out.println("Ar: " + Ar);
-
+        System.out.println("Removing index 3: " + Ar.remove(3));
+        System.out.println("Ar: " + Ar);
+        System.out.println("Removing index 1: " + Ar.remove(1));
+        System.out.println("Ar: " + Ar);
+        Ar.addLast(-8);
+        System.out.println("Ar: " + Ar);
     }
 }

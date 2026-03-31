@@ -114,10 +114,44 @@ public class OurLinkedList <T>{
         }
     }
     public T remove(int ind){
-
+        if(ind < 0 || ind > size-1){
+            throw new IndexOutOfBoundsException();
+        }
+        if(ind == 0){
+            return this.remove();
+        }
+        //advance ind-1 times
+        Node<T> temp = Head;
+        for(int i =0; i < ind -1; i++){
+            temp = temp.getNext();
+        }
+        //save data of next of temp
+        T save = temp.getNext().getData();
+        //set next of temp to next of next of temp.
+        temp.setNext(temp.getNext().getNext());
+        if(ind == size-1){
+            //we removed the last one, update the Tail
+            Tail = temp;
+        }
+        size--;
+        return save;
+    }
+    public T removeFirst(){
+        return this.remove();
+    }
+    public T removeLast(){
+        return this.remove(this.size-1);
     }
     public T get(int ind){
-
+        if(ind < 0 || ind > size-1){
+            throw new IndexOutOfBoundsException();
+        }
+        Node<T> temp = Head;
+        //advance ind times
+        for(int i = 0; i < ind; i++){
+            temp = temp.getNext();
+        }
+        return temp.getData();
     }
     public String toString(){
         //Already given in NodeTester.
