@@ -74,22 +74,50 @@ public class OurLinkedList <T>{
         return Head.getData();
     }
     public void addFirst(T e){
-
-
+        if(this.isEmpty()){
+            add(e);
+        }
+        //create a node
+        Node<T> newNode = new Node<>(e);
+        //always alter the newNode first
+        newNode.setNext(Head);
+        Head = newNode;
+        size++;
     }
     public void addLast(T e){
         this.add(e);
     }
     public void add(int ind, T e){
         //check ind is valid index otherwise throw IndexOutOfBoundsException
+        if(ind < 0 || ind > size){
+            throw new IndexOutOfBoundsException();
+        }
+        if(ind == 0) {
+            addFirst(e);
+        }else if (ind == size){
+            addLast(e);
+        }else {
+            //have a reference to start at Head, temp
+            Node<T> temp = Head;
+            //move ind-1 times in the list
+            for (int i = 0; i < ind - 1; i++) {
+                temp = temp.getNext();
+            }
+            //create a new Node
+            Node<T> newNode = new Node<>(e);
+            //set next of newNode to next of temp
+            newNode.setNext(temp.getNext());
+            //set next of temp to newNode
+            temp.setNext(newNode);
+            //increase size
+            size++;
+        }
+    }
+    public T remove(int ind){
 
-        //have a reference to start at Head, temp
-        //move ind-1 times in the list
+    }
+    public T get(int ind){
 
-        //create a new Node
-        //set next of newNode to next of temp
-        //set next of temp to newNode
-        //increase size
     }
     public String toString(){
         //Already given in NodeTester.

@@ -21,7 +21,7 @@ public class LinkedListTester {
         Ar.add(-1);
         Ar.add(-7);
         System.out.println("Ar: " + Ar);
-        Ar.add(-13, 2);
+        Ar.add(2, -13);
         System.out.println("Ar: " + Ar);
 
     }
