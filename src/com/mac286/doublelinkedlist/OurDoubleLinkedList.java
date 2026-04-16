@@ -71,7 +71,7 @@ public class OurDoubleLinkedList <T>{
 
     //remove removes the first and returns the data
     public T remove(){
-
+        return null;
     }
     public T poll(){
         return this.remove();
@@ -134,6 +134,7 @@ public class OurDoubleLinkedList <T>{
         //save data of next of temp
 
         //set next of temp to next of next of temp.
+        return null;
 
     }
     public T removeFirst(){

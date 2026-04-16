@@ -76,6 +76,7 @@ public class OurLinkedList <T>{
     public void addFirst(T e){
         if(this.isEmpty()){
             add(e);
+            return;
         }
         //create a node
         Node<T> newNode = new Node<>(e);
@@ -94,8 +95,10 @@ public class OurLinkedList <T>{
         }
         if(ind == 0) {
             addFirst(e);
+
         }else if (ind == size){
             addLast(e);
+
         }else {
             //have a reference to start at Head, temp
             Node<T> temp = Head;
