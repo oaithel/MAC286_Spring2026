@@ -2,11 +2,25 @@ package com.mac286.binarysearchtree;
 
 public class BTreeTester {
     public static void main(String[] args) {
-        String st = "Hz there";
-        String st1 = "How";
-        Integer i= 20;
-        Integer s = 25;
-        System.out.println("i and s cimpared: " + i.compareTo(s));
-        System.out.println("comparing the strings: " + st.compareTo(st1));
+       BTree<Integer, String> T = new BTree<>();
+       T.insert(25, "Hi25");
+       T.insert(13, "Hi13");
+       T.insert(28, "H28");
+       T.insert(17, "Hi17");
+       T.insert(21, "Hi21");
+       T.insert(15, "Hi15");
+       T.insert(12, "Hi12");
+       T.insert(30, "Hi30");
+       T.insert(26, "Hi26");
+       T.insert(35, "Hi35");
+       T.insert(31, "Hi31");
+       T.preOrderTraversal();
+        T.inOrderTraversal();
+        T.postOrderTraversal();
+
+
+
+
+
     }
 }
