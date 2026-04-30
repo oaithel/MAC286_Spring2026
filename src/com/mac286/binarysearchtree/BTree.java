@@ -50,6 +50,12 @@ public class BTree <K extends Comparable, T>{
 
     private Node<K, T> root;
     private int size;
+    public int size(){
+        return size;
+    }
+    public boolean isEmpty(){
+        return (size == 0);
+    }
     public BTree(){
         root = null;
         size = 0;
@@ -141,8 +147,14 @@ public class BTree <K extends Comparable, T>{
         //visit the root
         System.out.print("  " + n);
     }
+    //TODO: HW7
     //returns the reference to the node with key k
     private Node<K, T> find(K k){
+        //start at the root
+        //while not found
+            //if key is same as temp, this is the node we are looking for
+            //else if key is smaller, then go to the left, if no left then node does
+            //not exist
         return null;
     }
     //returns refrence to smallest on Right
