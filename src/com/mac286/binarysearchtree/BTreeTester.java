@@ -15,12 +15,9 @@ public class BTreeTester {
        T.insert(35, "Hi35");
        T.insert(31, "Hi31");
        T.preOrderTraversal();
-        T.inOrderTraversal();
-        T.postOrderTraversal();
-
-
-
-
-
+       T.inOrderTraversal();
+       T.postOrderTraversal();
+        System.out.println("Delete 28: " + T.delete(28));
+        T.preOrderTraversal();
     }
 }

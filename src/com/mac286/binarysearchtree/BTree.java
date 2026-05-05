@@ -149,25 +149,149 @@ public class BTree <K extends Comparable, T>{
     }
     //TODO: HW7
     //returns the reference to the node with key k
-    private Node<K, T> find(K k){
+     private Node<K, T> find(K k){
         //start at the root
+        Node<K, T> temp = root;
         //while not found
+        while(temp != null) {
             //if key is same as temp, this is the node we are looking for
-            //else if key is smaller, then go to the left, if no left then node does
-            //not exist
+            if (temp.key.compareTo(k) == 0) {
+                return temp;
+            } else if (temp.key.compareTo(k) > 0) {
+                //go to the left
+                temp = temp.getLeft();
+            } else {
+                temp = temp.getRight();
+            }
+        }
         return null;
     }
     //returns refrence to smallest on Right
     private Node<K, T> smallestOnRight(Node<K, T> n){
-        return null;
+        if(n.getRight() == null){
+            return null;
+        }
+        //go right once, then keep going left
+        Node<K, T> temp = n.getRight();
+        while(temp.getLeft() != null){
+            temp = temp.getLeft();
+        }
+        return temp;
     }
     //returns refrence to largest on left
-    private Node<K, T> largestOnRight(Node<K, T> n){
-        return null;
+
+     private Node<K, T> largestOnLeft(Node<K, T> n){
+        if(n.getLeft() == null){
+            return null;
+        }
+        //go left once, then keep going right
+        Node<K, T> temp = n.getLeft();
+        while(temp.getRight() != null){
+            temp = temp.getRight();
+        }
+        return temp;
     }
     private Node<K, T> parentOf(K k){
-
+        if(root.getKey().compareTo(k) == 0 || this.isEmpty()){
+            return null;
+        }
+        Node<K, T> temp = root;
+        while(temp != null){
+            if(temp.getLeft() != null && temp.getLeft().getKey().compareTo(k) == 0){
+                return temp; //temp is the parent
+            }
+            if(temp.getRight() != null && temp.getRight().getKey().compareTo(k) == 0){
+                return temp; //temp is the parent
+            }
+            if(k.compareTo(temp.getKey()) < 0){
+                //go to the left is there is a left
+                temp = temp.getLeft();
+            }else{
+                temp = temp.getRight();
+            }
+        }
         return null;
     }
 
+    public T delete(K k){
+        Node<K, T> nodeToDelete = find(k);
+        if(nodeToDelete == null) {
+            return null;
+        }
+        //do we have a leaf
+        if(nodeToDelete.getLeft() == null && nodeToDelete.getRight() == null){
+            if(nodeToDelete == root){
+                root = null;
+                size = 0;
+                return nodeToDelete.getData();
+            }
+            Node<K, T> parentNodeToDelete = parentOf(k);
+            if(parentNodeToDelete == null){
+                System.out.println("Something is wrong");
+            }
+            if(parentNodeToDelete.getLeft().getKey().compareTo(k) == 0){
+                //the leaf is connected to the parent through the left
+                size--;
+                parentNodeToDelete.setLeft(null);
+                return nodeToDelete.getData();
+            }else{
+                size--;
+                parentNodeToDelete.setRight(null);
+                return nodeToDelete.getData();
+            }
+        }
+        //The node is not a leaf
+        /*
+        if(nodeToDelete.getLeft() != null){
+            return replaceWithLargestOnLeft(nodeToDelete);
+        }else{
+            return replaceWithSmallestOnRight(nodeToDelete);
+        }
+         */
+        if(nodeToDelete.getRight() != null){
+            return replaceWithSmallestOnRight(nodeToDelete);
+        }else{
+            return replaceWithLargestOnLeft(nodeToDelete);
+        }
+    }
+    T replaceWithLargestOnLeft(Node<K, T> nodeToDelete) {
+        //replace with largest On the left
+        Node<K, T> largestLeft = largestOnLeft(nodeToDelete);
+        Node<K, T> parentLargestLeft = parentOf(largestLeft.key);
+        //copy largestLeft to Node to delete
+        T save = nodeToDelete.getData();
+        nodeToDelete.setKey(largestLeft.key);
+        nodeToDelete.setData(largestLeft.getData());
+        if (parentLargestLeft.getLeft() != null && parentLargestLeft.getLeft().getKey().compareTo(largestLeft.key) == 0) {
+            //lagest on left is connect to the left of parent.
+            parentLargestLeft.setLeft(largestLeft.getLeft());
+            size--;
+            return save;
+        } else {
+            //The parent is connected through right
+            parentLargestLeft.setRight(largestLeft.getLeft());
+            size--;
+            return save;
+        }
+    }
+T replaceWithSmallestOnRight(Node<K, T> nodeToDelete){
+    //replace with smallest On the right
+    Node<K, T> smallestRight = smallestOnRight(nodeToDelete);
+    Node<K, T> parentSmallestRight = parentOf(smallestRight.key);
+    //copy smallestRight to Node to delete
+    T save = nodeToDelete.getData();
+    nodeToDelete.setKey(smallestRight.key);
+    nodeToDelete.setData(smallestRight.getData());
+    if(parentSmallestRight.getLeft() != null && parentSmallestRight.getLeft().getKey().compareTo(smallestRight.key) == 0){
+        //smallest on the right is connect to the left of parent.
+        parentSmallestRight.setLeft(smallestRight.getRight());
+        size--;
+        return save;
+    }else{
+        //The parent is connected through right
+        parentSmallestRight.setRight(smallestRight.getRight());
+        size--;
+        return save;
+    }
+}
 }
