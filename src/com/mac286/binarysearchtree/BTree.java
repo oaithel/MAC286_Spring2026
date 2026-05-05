@@ -294,4 +294,7 @@ T replaceWithSmallestOnRight(Node<K, T> nodeToDelete){
         return save;
     }
 }
+public K smallest(){
+
+}
 }
