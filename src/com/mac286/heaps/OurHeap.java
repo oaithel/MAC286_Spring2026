@@ -62,7 +62,7 @@ public class OurHeap<T extends Comparable<T>> {
         //end of loop add ] to the string and return it
         return st +"]";
     }
-    //TODO:
+    //TODO: HW8
     private void reheapify(int ind){
         if(ind >= size) {
             return;
