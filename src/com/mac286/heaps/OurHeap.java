@@ -20,27 +20,69 @@ public class OurHeap<T extends Comparable<T>> {
     }
     public void add(T e){
         //if full resize
-
+        if(size == H.length){
+            resize();
+        }
         //add e at index size, increase size
-
+        H[size] = e;
+        size++;
         //heapify at index size-1
+        heapify(size-1);
     }
     private void heapify(int ind){
         //if ind is 0 then return
-
+        if(ind <= 0){
+            return;
+        }
         //find index of parent indParent
-
+        int indParent = (ind - 1)/2;
         //compare element at ind to element at indParent, if smaller
         //then swap elements at ind and indParent, then
         // heapify at indParent
+        if(H[ind].compareTo(H[indParent]) < 0){
+            //swap H[ind] with H[indParent]
+            T save = H[ind];
+            H[ind] = H[indParent];
+            H[indParent] = save;
+            heapify(indParent);
+        }
         // if not smaller then return.
     }
     public String toString(){
         //if empty return []
+        if(this.isEmpty()){
+            return "[]";
+        }
         //start adding the first element with bracket and no comma
-
+        String st = "[" + H[0];
         //for the size-1 other elements add comma then element
-
+        for(int i = 1; i < size; i++){
+            st += ", " + H[i];
+        }
         //end of loop add ] to the string and return it
+        return st +"]";
+    }
+    //TODO:
+    private void reheapify(int ind){
+        if(ind >= size) {
+            return;
+        }
+        //find the index of the smallest of the childrend
+        //of element at ind. Call it indSmalest
+        //if element at ind is larger than element at indSmallest
+        //swap the two elements, then reheapify at indSmallest
+        //if not return.
+    }
+    public T poll(){
+        //if empty return null
+        //save first element at index 0
+
+        //replace element at index 0 by element at index size-1
+        //decrease the size
+        //reheapify at index 0
+
+    }
+    public T remove(){
+        return this.poll();
     }
 }
