@@ -295,6 +295,13 @@ T replaceWithSmallestOnRight(Node<K, T> nodeToDelete){
     }
 }
 public K smallest(){
-return null;
+    if(this.isEmpty()){
+        return null;
+    }
+    Node<K, T> temp = root;
+    while(temp.getLeft() != null){
+        temp = temp.getLeft();
+    }
+    return temp.getKey();
 }
 }

@@ -64,23 +64,43 @@ public class OurHeap<T extends Comparable<T>> {
     }
     //TODO: HW8
     private void reheapify(int ind){
-        if(ind >= size) {
+        if(2*ind+1 >= size) {
+            //no left child, means this is a leaf
             return;
         }
-        //find the index of the smallest of the childrend
+        //find the index of the smallest of the children
+        int indexSmallest = 2*ind + 1;
         //of element at ind. Call it indSmalest
+        if(2*ind + 2 < size){
+            //there is a right child, we compare the two children
+            if(H[indexSmallest].compareTo(H[2*ind + 2]) > 0){
+                //The right is the smallest
+                indexSmallest = 2*ind + 2;
+            }
+        }
+        //We have the smallest
         //if element at ind is larger than element at indSmallest
-        //swap the two elements, then reheapify at indSmallest
-        //if not return.
+        if(H[indexSmallest].compareTo(H[ind]) < 0){
+            //swap H[ind] with H[indexSmallest
+            T temp = H[ind];
+            H[ind] = H[indexSmallest];
+            H[indexSmallest] = temp;
+            reheapify(indexSmallest);
+        }
     }
     public T poll(){
         //if empty return null
+        if(this.isEmpty())
+            return null;
         //save first element at index 0
-
+        T save = H[0];
         //replace element at index 0 by element at index size-1
+        H[0] = H[size-1];
         //decrease the size
+        size--;
         //reheapify at index 0
-
+        reheapify(0);
+        return save;
     }
     public T remove(){
         return this.poll();
