@@ -27,8 +27,10 @@ public class HashtableExample {
         for(Integer k: keys){
             System.out.println(k + " = " + Tab.get(k));
         }
-        String st = "No clue";
-        System.out.println("st hashcode: " + st.hashCode());
-        System.out.println("Tab hashcode: " + Tab.hashCode());
+
+        System.out.println("Tab: " + Tab);
+        Tab.put(11111, "someting else");
+        System.out.println("Tab: " + Tab);
+
     }
 }
