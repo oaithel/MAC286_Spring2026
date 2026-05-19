@@ -91,7 +91,7 @@ public class OurHashtable <K, T>{
                 return H[ind].getData();
             }
             //if not go to next element
-            ind = ind + 1;
+            ind = (ind+1)%H.length;
         }
         return null;
     }
@@ -106,8 +106,7 @@ public class OurHashtable <K, T>{
             i++;
         String st = "{" + H[i];
         int s = 1;
-        i++;
-        for(int j = i+1; j < H.length && s < size; j++) {
+        for(int j = i+1; j < H.length && s <= size; j++) {
             //continue the loop from that point on until the end
             //if current element is not null, add "," + element to it.
             if(H[j] != null){
@@ -117,8 +116,48 @@ public class OurHashtable <K, T>{
         }
         return st + "}";
     }
-    public T remove(){
-
+    private void shift(int i){
+        int s = i;
+        while(H[(i+s)%H.length] != null){
+            int j = hashFunction(H[(i+s)%H.length].getKey());
+            if(i < (i+s)%H.length){
+                //I am in the case where the start is smaller than the end
+                if (!(j > i && j <= (i+s)%H.length)){
+                    //j is NOT in the interval
+                    H[i] = H[(i+s)%H.length];
+                    H[(i+s)%H.length] = null;
+                    i = (i+s)%H.length;
+                    s = 1;
+                } else{
+                    s++;
+                }
+            }else{
+                //I am in the circular case.
+                if(!(j > i || j<= (i+s)%H.length)){
+                    //j is NOT in the interval
+                    H[i] = H[(i+s)%H.length];
+                    H[(i+s)%H.length] = null;
+                    i = (i+s)%H.length;
+                    s = 1;
+                }else{
+                    s++;
+                }
+            }
+        }
+    }
+    public T remove(K k){
+        //compute the index
+        int ind = hashFunction(k);
+        while(H[ind] != null){
+            if(H[ind].key.equals(k)){
+               T temp = H[ind].getData();
+               H[ind] = null;
+               shift(ind);
+               size--;
+               return temp;
+            }
+            ind = (ind+1)%H.length;
+        }
         return null;
     }
 }

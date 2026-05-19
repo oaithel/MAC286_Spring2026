@@ -14,12 +14,11 @@ public class HashtableExample {
         Tab.put(11101, "Long Island City");
         Tab.put(10000, "Manhattan");
         System.out.println("Tab: " + Tab.toString());
-        //System.out.println("ramoving zip 10000: " + Tab.remove(10000));
-        //System.out.println("Tab: " + Tab.toString());
         Tab.put(11111, "No Clue");
         System.out.println("Value at 11111: "+ Tab.get(11111));
         Tab.put(11377, "Woodside");
         System.out.println("Tab: " + Tab.toString());
+
         //Going through elements of a hashtable.
         //1- get the set of the keys
         /*Set<Integer> keys = Tab.keySet();
@@ -31,6 +30,9 @@ public class HashtableExample {
         System.out.println("Tab: " + Tab);
         Tab.put(11111, "someting else");
         System.out.println("Tab: " + Tab);
+        System.out.println("Data at 11111: " + Tab.get(11111));
+        System.out.println("ramoving zip 10000: " + Tab.remove(10000));
+        System.out.println("Tab: " + Tab.toString());
 
     }
 }
